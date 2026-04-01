@@ -34,11 +34,6 @@ export class CelebrationComponent implements OnInit, AfterViewInit, OnDestroy {
     { src: 'assets/images/couple18s.jpeg', alt: 'My Beautiful Frame...' }
   ];
 
-  videos = [
-    { src: 'assets/videos/video2.mp4', title: 'Our Love Story' },
-    { src: 'assets/videos/video3.mp4', title: 'Memories Together' }
-  ];
-
   currentImageIndex = 0;
   currentVideoIndex = 0;
   isPlaying = false;
