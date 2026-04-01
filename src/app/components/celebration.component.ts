@@ -14,24 +14,24 @@ export class CelebrationComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('thumbnailContainer') thumbnailContainer!: ElementRef;
 
   images = [
-    { src: 'assets/images/couple1.jpeg', alt: 'My Beautiful Zuhi 🥰❤️' },
-    { src: 'assets/images/couple2.jpeg', alt: 'You + Me = Forever 👩‍❤️‍👨✨' },
-    { src: 'assets/images/couple3.jpeg', alt: 'Two Hearts, One Soul 😘💞' },
-    { src: 'assets/images/couple4.jpeg', alt: 'Memories with You = Magic 💖✨' },
-    { src: 'assets/images/couple5.jpeg', alt: 'Every Moment Feels Like Love 💕' },
-    { src: 'assets/images/couple6.jpeg', alt: 'With You, I Found My Home 🏡❤️' },
-    { src: 'assets/images/couple7.jpeg', alt: 'You Are My Happiness 😊💘' },
-    { src: 'assets/images/couple8.jpeg', alt: 'Love Looks Perfect on Us 😍💑' },
-    { src: 'assets/images/couple9.jpeg', alt: 'Forever Starts With You 💍❤️' },
-    { src: 'assets/images/couple10.jpeg', alt: 'My Always & Forever 💞♾️' },
-    { src: 'assets/images/couple11.jpeg', alt: 'You Are My Favorite Story 📖❤️' },
-    { src: 'assets/images/couple12.jpeg', alt: 'Together is My Favorite Place 🥰✨' },
-    { src: 'assets/images/couple13.jpeg', alt: 'Every Frame, Just Love 💖📸' },
-    { src: 'assets/images/couple14.jpeg', alt: 'With You, Everything Feels Right ❤️🌹' },
-    { src: 'assets/images/couple15.jpeg', alt: 'With You, Everything Feels Right ❤️🌹' },
-    { src: 'assets/images/couple16.jpeg', alt: 'With You, Everything Feels Right ❤️🌹' },
-    { src: 'assets/images/couple17.jpeg', alt: 'My World...' },
-    { src: 'assets/images/couple18s.jpeg', alt: 'My Beautiful Frame...' }
+    { src: '/images/couple1.jpeg', alt: 'My Beautiful Zuhi 🥰❤️' },
+    { src: '/images/couple2.jpeg', alt: 'You + Me = Forever 👩‍❤️‍👨✨' },
+    { src: '/images/couple3.jpeg', alt: 'Two Hearts, One Soul 😘💞' },
+    { src: '/images/couple4.jpeg', alt: 'Memories with You = Magic 💖✨' },
+    { src: '/images/couple5.jpeg', alt: 'Every Moment Feels Like Love 💕' },
+    { src: '/images/couple6.jpeg', alt: 'With You, I Found My Home 🏡❤️' },
+    { src: '/images/couple7.jpeg', alt: 'You Are My Happiness 😊💘' },
+    { src: '/images/couple8.jpeg', alt: 'Love Looks Perfect on Us 😍💑' },
+    { src: '/images/couple9.jpeg', alt: 'Forever Starts With You 💍❤️' },
+    { src: '/images/couple10.jpeg', alt: 'My Always & Forever 💞♾️' },
+    { src: '/images/couple11.jpeg', alt: 'You Are My Favorite Story 📖❤️' },
+    { src: '/images/couple12.jpeg', alt: 'Together is My Favorite Place 🥰✨' },
+    { src: '/images/couple13.jpeg', alt: 'Every Frame, Just Love 💖📸' },
+    { src: '/images/couple14.jpeg', alt: 'With You, Everything Feels Right ❤️🌹' },
+    { src: '/images/couple15.jpeg', alt: 'With You, Everything Feels Right ❤️🌹' },
+    { src: '/images/couple16.jpeg', alt: 'With You, Everything Feels Right ❤️🌹' },
+    { src: '/images/couple17.jpeg', alt: 'My World...' },
+    { src: '/images/couple18s.jpeg', alt: 'My Beautiful Frame...' }
   ];
 
   currentImageIndex = 0;
@@ -227,7 +227,7 @@ export class CelebrationComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onImageError(event: any): void {
     console.log('Image failed to load:', event.target.src);
-    const fallbackSrc = event.target.src.replace('assets/', '/assets/');
+    const fallbackSrc = event.target.src.replace('/', '//');
     event.target.src = fallbackSrc;
   }
 
