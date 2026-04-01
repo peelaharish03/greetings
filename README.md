@@ -1,59 +1,182 @@
-# Greetings
+# Birthday Wishes App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.4.
+A beautiful, reusable Angular 17 standalone single-page application for creating personalized birthday wishes with configuration-driven personalization.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- 🎨 **Dynamic Theming**: All colors, fonts, and styling controlled by configuration
+- 🎭 **Rich Animations**: Typing effects, floating balloons, fireworks, confetti
+- 📱 **Fully Responsive**: Works perfectly on mobile, tablet, and desktop
+- 🎵 **Background Music**: Auto-play birthday music with toggle control
+- 🖼️ **Image Gallery**: Auto-sliding carousel of birthday person photos
+- 🔄 **Reusable**: Easy to customize for different people
+- 📤 **Shareable**: Built-in share functionality
 
-```bash
-ng serve
+## Project Structure
+
+```
+src/app/
+├── components/
+│   └── birthday-page.component.ts
+├── config/
+│   └── birthday.config.ts
+├── services/
+│   └── config.service.ts
+├── app.ts
+├── app.config.ts
+├── app.routes.ts
+└── main.ts
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Configuration
 
-## Code scaffolding
+Edit `src/app/config/birthday.config.ts` to personalize the birthday wishes:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```typescript
+export const BIRTHDAY_CONFIG = {
+  personName: "Harish",
+  mainMessage: "Happy Birthday Harish 🎉",
+  subMessage: "Wishing you happiness and success!",
+  themeColor: "#ff4081",
+  backgroundGradient: ["#ff9a9e", "#fad0c4"],
+  fontFamily: "'Poppins', sans-serif",
+  personImages: [
+    "assets/images/img1.jpg",
+    "assets/images/img2.jpg",
+    "assets/images/img3.jpg"
+  ],
+  backgroundMusic: "assets/music/happy-birthday.mp3"
+};
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Setup Instructions
 
-```bash
-ng generate --help
-```
+### Prerequisites
+- Node.js 16+ 
+- Angular CLI 17+
 
-## Building
+### Installation
 
-To build the project run:
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-```bash
-ng build
-```
+2. **Add Assets**
+   Create folders and add your files:
+   ```
+   src/assets/
+   ├── images/
+   │   ├── img1.jpg
+   │   ├── img2.jpg
+   │   └── img3.jpg
+   └── music/
+       └── happy-birthday.mp3
+   ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+3. **Run Development Server**
+   ```bash
+   ng serve
+   ```
 
-## Running unit tests
+4. **Open Browser**
+   Navigate to `http://localhost:4200`
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Customization Guide
 
-```bash
-ng test
-```
+### Changing the Birthday Person
+1. Edit `src/app/config/birthday.config.ts`
+2. Update `personName`, `mainMessage`, and `subMessage`
+3. Replace images in `src/assets/images/`
+4. Update `personImages` array with new file names
 
-## Running end-to-end tests
+### Changing Colors
+- `themeColor`: Primary accent color for buttons and highlights
+- `backgroundGradient`: Two-color array for background gradient
 
-For end-to-end (e2e) testing, run:
+### Changing Fonts
+- Update `fontFamily` with any Google Font or system font
+- Make sure to add Google Font link in `src/index.html` if needed
 
-```bash
-ng e2e
-```
+### Adding More Images
+1. Add images to `src/assets/images/`
+2. Update `personImages` array with new file paths
+3. The carousel will automatically include all images
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Deployment
 
-## Additional Resources
+### Firebase Hosting
+1. **Build the app**
+   ```bash
+   ng build
+   ```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+2. **Install Firebase CLI**
+   ```bash
+   npm install -g firebase-tools
+   ```
+
+3. **Initialize Firebase**
+   ```bash
+   firebase init hosting
+   ```
+
+4. **Deploy**
+   ```bash
+   firebase deploy
+   ```
+
+### Netlify
+1. **Build the app**
+   ```bash
+   ng build
+   ```
+
+2. **Deploy dist folder to Netlify**
+   - Drag and drop `dist/greetings` folder to Netlify
+   - Or connect Git repository for automatic deployments
+
+### Vercel
+1. **Install Vercel CLI**
+   ```bash
+   npm install -g vercel
+   ```
+
+2. **Deploy**
+   ```bash
+   vercel --prod
+   ```
+
+## Browser Compatibility
+- Chrome 70+
+- Firefox 65+
+- Safari 12+
+- Edge 79+
+
+## Performance Tips
+- Optimize images before adding to assets
+- Use compressed audio files for background music
+- Consider lazy loading for large image sets
+
+## Troubleshooting
+
+### Audio Not Playing
+- Modern browsers block autoplay
+- User interaction required to start music
+- Use the "Toggle Music" button
+
+### Images Not Loading
+- Check file paths in configuration
+- Ensure images exist in `src/assets/images/`
+- Verify file extensions match
+
+### Animations Not Smooth
+- Check device performance
+- Reduce number of fireworks if needed
+- Optimize image sizes
+
+## License
+MIT License - feel free to use for personal or commercial projects.
+
+## Support
+For issues and questions, please check the configuration and ensure all assets are properly loaded.

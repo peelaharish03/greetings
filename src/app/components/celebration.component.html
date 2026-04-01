@@ -1,0 +1,89 @@
+<div class="celebration-container">
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+  
+  <!-- Romantic Background -->
+  <div class="celebration-background"></div>
+  
+  <!-- Floating Hearts -->
+  <div class="hearts-container">
+    <div class="heart heart-1">❤️</div>
+    <div class="heart heart-2">💕</div>
+    <div class="heart heart-3">💖</div>
+    <div class="heart heart-4">💗</div>
+    <div class="heart heart-5">💝</div>
+    <div class="heart heart-6">🌹</div>
+    <div class="heart heart-7">✨</div>
+    
+  </div>
+  
+  <!-- Header -->
+  <header class="celebration-header">
+    <div class="header-content">
+      <h1 class="celebration-title">😀 Ohhooooo...!! She Said YES!🥰 💍</h1>
+      <p class="celebration-subtitle">Best Decision Ever ❤️ 🎉</p>
+      <button class="back-btn" (click)="goBack()">
+        ← Back to Proposal
+      </button>
+    </div>
+  </header>
+  
+  <!-- Main Content -->
+  <main class="celebration-content">
+    <!-- Image Gallery Section -->
+    <section class="gallery-section">
+      <h2 class="section-title">Our Beautiful Moments</h2>
+      
+      <div class="image-gallery">
+  <div class="main-image-container">
+    <img 
+      [src]="images[currentImageIndex].src" 
+      [alt]="images[currentImageIndex].alt"
+      class="main-image"
+      (error)="onImageError($event)"
+      (load)="onImageLoad($event)"
+    />
+    <div class="image-overlay">
+      <p>{{ images[currentImageIndex].alt }}</p>
+    </div>
+  </div>
+
+  <!-- Image Thumbnails -->
+  <div class="image-thumbnails" #thumbnailContainer>
+    <div 
+      *ngFor="let image of images; let i = index"
+      class="thumbnail"
+      [class.active]="i === currentImageIndex"
+      (click)="selectImage(i)"
+    >
+      <img 
+        [src]="image.src" 
+        [alt]="image.alt"
+        class="thumbnail-image"
+        (error)="onImageError($event)"
+      />
+    </div>
+  </div>
+</div>
+    </section>
+    
+    <!-- Love Message -->
+    <section class="love-message">
+      <div class="message-card">
+        <h2>Forever Starts Today 💕</h2>
+        <p>
+          Thank you for saying YES to forever! Every moment with you is a treasure, 
+          and I can't wait to spend all our birthdays together creating more beautiful memories.
+        </p>
+        <p class="love-signature">
+          With all my love, always and forever ❤️
+        </p>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="celebration-footer">
+    <p>Made with ❤️ for my beloved Zuhi</p>
+  </footer>
+</div>

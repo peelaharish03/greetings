@@ -1,0 +1,55 @@
+<div class="proposal-container">
+  <!-- Romantic Background -->
+  <div class="romantic-background"></div>
+
+  <!-- Floating Hearts Animation -->
+  <div class="hearts-container">
+    <div class="heart heart-1">❤️</div>
+    <div class="heart heart-2">💕</div>
+    <div class="heart heart-3">💖</div>
+    <div class="heart heart-4">💗</div>
+    <div class="heart heart-5">💝</div>
+  </div>
+
+  <!-- Invisible movement area for escape button -->
+  <div class="movement-area" #movementArea>
+    <button
+      *ngIf="isEscapeMode"
+      #escapeButton
+      class="btn no-button escape-mode"
+      [style.left.px]="noButtonLeft"
+      [style.top.px]="noButtonTop"
+    >
+      {{ currentButtonText }}
+    </button>
+  </div>
+
+  <!-- Main Content -->
+  <div class="proposal-content">
+    <div class="proposal-card">
+      <h1 class="birthday-title"> Zuhi, every day feels special because I have you. Will you be my forever Valentine? ❤️</h1>
+        <p > Choose wisely (the "NO" button is.... Shy..😌) </p>
+
+      <div class="proposal-questions">
+       
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn yes-button" (click)="onYesClick()">
+          YES
+        </button>
+
+        <button
+          *ngIf="!isEscapeMode"
+          #startNoButton
+          class="btn no-button"
+          (mouseenter)="activateEscapeMode($event)"
+          (click)="activateEscapeMode($event)"
+          (touchstart)="activateEscapeMode($event)"
+        >
+          {{ currentButtonText }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="birthday-container">
+  <!-- Loading Screen -->
+  <div class="loading-screen" *ngIf="isLoading">
+    <div class="loading-spinner"></div>
+    <p>Preparing birthday wishes...</p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" [class.show-animation]="showAnimation" *ngIf="!isLoading">
+    <!-- Fireworks Canvas -->
+    <canvas id="fireworks-canvas" class="fireworks-canvas"></canvas>
+    
+    <!-- Background Gradient -->
+    <div class="background-gradient"></div>
+    
+    <!-- Floating Balloons -->
+    <div class="balloons-container">
+      <div class="balloon balloon-1" *ngIf="showAnimation"></div>
+      <div class="balloon balloon-2" *ngIf="showAnimation"></div>
+      <div class="balloon balloon-3" *ngIf="showAnimation"></div>
+      <div class="balloon balloon-4" *ngIf="showAnimation"></div>
+      <div class="balloon balloon-5" *ngIf="showAnimation"></div>
+      <div class="balloon balloon-6" *ngIf="showAnimation"></div>
+      <div class="balloon balloon-7" *ngIf="showAnimation"></div>
+    </div>
+
+    <!-- Floating Stars -->
+    <div class="stars-container">
+      <div class="star star-1" *ngIf="showAnimation"></div>
+      <div class="star star-2" *ngIf="showAnimation"></div>
+      <div class="star star-3" *ngIf="showAnimation"></div>
+      <div class="star star-4" *ngIf="showAnimation"></div>
+      <div class="star star-5" *ngIf="showAnimation"></div>
+      <div class="star star-6" *ngIf="showAnimation"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="content-wrapper">
+        <!-- Main Birthday Message with Typing Effect -->
+        <h1 class="birthday-message typing-effect" *ngIf="config">
+          {{ config.mainMessage }}
+        </h1>
+        
+        <!-- Sub Message -->
+        <p class="sub-message fade-in" *ngIf="config">
+          {{ config.subMessage }}
+        </p>
+        
+        <!-- Image Gallery -->
+        <div class="image-gallery" *ngIf="config && config.personImages.length > 0">
+          <p>DEBUG: Images found: {{ config.personImages.length }}</p>
+          <p>DEBUG: Current index: {{ currentImageIndex }}</p>
+          <p>DEBUG: Current image: {{ config.personImages[currentImageIndex] }}</p>
+          
+          <div class="image-container">
+            <img 
+              [src]="config.personImages[currentImageIndex]" 
+              [alt]="'Photo of ' + config.personName"
+              class="birthday-image fade-in"
+              (error)="onImageError($event)"
+              (load)="onImageLoad($event)"
+            />
+          </div>
+          
+          <!-- Image Indicators -->
+          <div class="image-indicators" *ngIf="config.personImages.length > 1">
+            <span 
+              *ngFor="let image of config.personImages; let i = index"
+              class="indicator"
+              [class.active]="i === currentImageIndex"
+            ></span>
+          </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+          <button class="btn btn-primary" (click)="replayAnimation()">
+            🔄 Replay Animation
+          </button>
+          <button class="btn btn-secondary" (click)="shareLink()">
+            🔗 Share Link
+          </button>
+          <button class="btn btn-music" (click)="toggleMusic()" *ngIf="config && config.backgroundMusic">
+            🎵 Toggle Music
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
