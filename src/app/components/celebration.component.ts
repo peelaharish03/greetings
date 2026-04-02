@@ -31,7 +31,7 @@ export class CelebrationComponent implements OnInit, AfterViewInit, OnDestroy {
     { src: '/images/couple15.jpeg', alt: 'With You, Everything Feels Right ❤️🌹' },
     { src: '/images/couple16.jpeg', alt: 'With You, Everything Feels Right ❤️🌹' },
     { src: '/images/couple17.jpeg', alt: 'My World...' },
-    { src: '/images/couple18s.jpeg', alt: 'My Beautiful Frame...' }
+    { src: '/images/couple18.jpeg', alt: 'My Beautiful Frame...' }
   ];
 
   currentImageIndex = 0;
@@ -227,15 +227,30 @@ export class CelebrationComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onImageError(event: any): void {
     console.log('Image failed to load:', event.target.src);
-    const fallbackSrc = event.target.src.replace('/', '//');
-    event.target.src = fallbackSrc;
+    // Try different path variations for assets
+    const originalSrc = event.target.src;
+    const filename = originalSrc.split('/').pop();
+    
+    // Try with leading slash
+    if (!originalSrc.startsWith('/')) {
+      event.target.src = '/' + originalSrc;
+    } else {
+      // Try without leading slash
+      event.target.src = originalSrc.replace('/', '');
+    }
+    
+    // If still fails, try a fallback
+    event.target.onerror = () => {
+      console.log('Fallback also failed for:', filename);
+      // You could set a placeholder image here if needed
+    };
   }
 
   onImageLoad(event: any): void {
     console.log('Image loaded successfully:', event.target.src);
   }
 
-  onVideoLoad(event: any): void {
+onVideoLoad(event: any): void {
     console.log('Video loaded successfully:', event.target.currentSrc);
   }
 
